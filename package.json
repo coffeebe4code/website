@@ -1,0 +1,12 @@
+{
+  "name": "website",
+  "version": "1.0.0",
+  "description": "blogging website",
+  "main": "index.js",
+  "scripts": {
+    "build": "docker build -t blog .",
+    "start": "docker run --rm -ti blog"
+  },
+  "author": "",
+  "license": "ISC"
+}
