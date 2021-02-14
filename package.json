@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "docker build -t blog .",
-    "start": "docker run --rm -ti blog"
+    "start": "docker run --rm -ti -p 8080:80 blog"
   },
   "author": "",
   "license": "ISC"
