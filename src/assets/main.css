@@ -1,5 +1,11 @@
 :root {
-	--main-background: #555753;
+	--main-background: #2E3436;
+	--h1: #AD7FA8;
+	--p: #D3D7CF;
+	--fill: #FFFFFF;
+	--th: #AD7FA8;
+	--tr: #D3D7CF;
+	--a: #34E2E2; 
 }
 
 html {
@@ -7,4 +13,28 @@ html {
 
 body {
 	background: var(--main-background);
+}
+
+h1 {
+	color: var(--h1);
+}
+
+p {
+	color: var(--p);
+}
+
+svg {
+	fill: var(--fill);
+}
+
+th {
+	color: var(--th);
+}
+
+tr {
+	color: var(--tr);
+}
+
+a {
+	color: var(--a);
 }

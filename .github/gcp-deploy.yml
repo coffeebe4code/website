@@ -1,0 +1,30 @@
+name: Docker
+
+on:
+    pull_request:
+        branches: [ master ]
+
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+        env:
+            IMAGE_NAME: gcr.io/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.GCP_APP_NAME }}
+        steps:
+            - name: checkout
+              uses: actions/checkout@v2
+
+            - name: login
+              uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+              with:
+                  GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+                  service_account_email: ${{ secrets.GCP_EMAIL }}
+                  service_account_key: ${{ secrets.GCP_CREDENTIALS }}
+
+            - name: build image
+              run: docker build -t $IMAGE_NAME
+
+            - name: push image
+              run: docker push $IMAGE_NAME
+
+            - name: deploy image
+              run: gcloud run deploy ${{ secrets.GCP_PROJECT_ID }} --image $IMAGE_NAME --region us-central1 --platform managed
